@@ -1,8 +1,9 @@
 #include "DataBase.hpp"
 #include <iostream>
 #include <fstream>
+#include <execution>
 
-bool DataBase::search(std::string login)
+bool DataBase::search(const std::string login)
 {
 	for (auto i = data_.begin(); i != data_.end(); i++)
 	{
@@ -14,7 +15,7 @@ bool DataBase::search(std::string login)
 	return false;
 }
 
-User DataBase::find(std::string login)
+User DataBase::find(const std::string login)
 {
 	for (auto i = data_.begin(); i != data_.end(); i++)
 	{
@@ -23,6 +24,7 @@ User DataBase::find(std::string login)
 			return *i;
 		}
 	}
+	throw std::runtime_error("DataBase error");
 }
 
 DataBase::DataBase()
@@ -39,13 +41,16 @@ void DataBase::registration()
 	std::cin >> password;
 	if (!search(login))
 	{
-		std::cout << "NEW!!\n\n";
-		User newUser(login, password);
+		std::cout << "\nYou are 1) QUEST \n\t2) ACCOUNTANT\n";
+		int type;
+		std::cin >> type;
+		User newUser(login, password, type);
 		data_.push_back(newUser);
-		User::numberOfUsers++;
-		std::ofstream file("listOfMembers.txt");
+		User::increaseNumberOfUsers();
+		std::cout << "NEW!!\n\n";
+		/*std::ofstream file("listOfMembers.txt");
 		file << "Login: " << newUser.getLogin() << "\n\n";
-		file.close();
+		file.close();*/
 	}
 	else
 	{

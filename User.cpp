@@ -11,8 +11,20 @@ User::User()
 	Password = "";
 }
 
-User::User(std::string & login, std::string & password) : Login(login), Password(password)
+User::User(std::string& login, std::string& password, int& type) : Login(login), Password(password)
 {
+	switch (type)
+	{
+	case 1:
+		this->userType = Type::CLIENT;
+		break;
+	case 2:
+		this->userType = Type::ACCOUNTANT;
+		break;
+	default:
+		throw std::invalid_argument("Wrong user type");
+		break;
+	}
 	//написать исключение
 }
 
@@ -21,7 +33,12 @@ std::string User::getLogin()
 	return Login;
 }
 
-bool User::check(User user, std::string password)
+void User::increaseNumberOfUsers()
+{
+	numberOfUsers++;
+}
+
+bool User::check(User user, const std::string& password)
 {
 	return (user.getPassword() == password);
 }

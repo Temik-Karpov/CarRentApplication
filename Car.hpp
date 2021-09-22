@@ -5,7 +5,7 @@
 class Car
 {
 private:
-	std::string name;
+	std::string name_;
 	enum Type
 	{
 		Sedan,
@@ -14,10 +14,13 @@ private:
 		SUV, 
 		Ñonvertible
 	};
-	double maxSpeed;
-	double fuelTankCapacity;
+	Type carType_;
+	double maxSpeed_;
+	double fuelTankCapacity_;
 public:
-
+	Car();
+	Car(std::string, Type, double, double);
+	~Car() = default;
 };
 
 #endif // !CAR_HPP

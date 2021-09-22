@@ -7,8 +7,8 @@ class DataBase
 {
 private:
 	std::list<User> data_;
-	bool search(std::string login);
-	User find(std::string login);
+	bool search(const std::string login);
+	User find(const std::string login);
 public:
 	DataBase();
 	~DataBase() = default;

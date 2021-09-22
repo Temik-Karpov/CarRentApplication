@@ -7,14 +7,21 @@ class User
 private:
 	std::string Login;
 	std::string Password;
+	enum Type
+	{
+		CLIENT,
+		ACCOUNTANT
+	};
+	Type userType;
 	std::string getPassword();
+	static int numberOfUsers;
 public:
 	User();
-	User(std::string&, std::string&);
+	User(std::string&, std::string&, int&);
 	~User() = default;
-	static int numberOfUsers;
 	std::string getLogin();
-	static bool check(User, std::string);
+	static void increaseNumberOfUsers();
+	static bool check(User, const std::string&);
 };
 #endif // !USER_HPP
 

@@ -12,7 +12,7 @@ private:
 public:
 	DataBase();
 	~DataBase() = default;
-	void registration();
+	int registration();
 };
 #endif // !DATA_BASE_HPP
 

@@ -31,8 +31,9 @@ DataBase::DataBase()
 {
 }
 
-void DataBase::registration()
+int DataBase::registration() 
 {
+	int type;
 	std::cout << "Welcome!\n";
 	std::cout << "Login: ";
 	std::string login, password;
@@ -42,7 +43,6 @@ void DataBase::registration()
 	if (!search(login))
 	{
 		std::cout << "\nYou are 1) QUEST \n\t2) ACCOUNTANT\n";
-		int type;
 		std::cin >> type;
 		User newUser(login, password, type);
 		data_.push_back(newUser);
@@ -62,6 +62,13 @@ void DataBase::registration()
 		{
 			std::cout << "WRONG!!\n\n";
 		}
+	}
+	switch (type)
+	{
+	case 1:
+		return 1;
+	case 2:
+		return 2;
 	}
 }
 

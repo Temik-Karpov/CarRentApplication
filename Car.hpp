@@ -21,6 +21,8 @@ public:
 	Car();
 	Car(std::string, Type, double, double);
 	~Car() = default;
+	std::string getName();
+	void info();
 };
 
 #endif // !CAR_HPP

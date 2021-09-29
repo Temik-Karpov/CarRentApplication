@@ -8,11 +8,12 @@ class CarCatalog
 private:
 	std::list<Car> catalog_;
 public:
-	CarCatalog();
-	~CarCatalog() = default;
-	void addCar(Car);
-	void deleteCar(Car);
-	void changeCar();
-	void showCar();
+	using iterator = std::list<Car>::iterator;
+	bool empty() const;
+	void pushBack(const Car);
+	void changeCar(const iterator);
+	iterator removeCar(const iterator iter);
+	iterator find(std::string& nameCar);
+	void show();
 };
 #endif // !CAR_CATALOG_HPP

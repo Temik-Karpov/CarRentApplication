@@ -9,6 +9,7 @@ User::User()
 {
 	Login = "";
 	Password = "";
+
 }
 
 User::User(std::string& login, std::string& password, int& type) : Login(login), Password(password)
